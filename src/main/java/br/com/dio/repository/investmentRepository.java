@@ -14,7 +14,6 @@ import java.util.List;
 import static br.com.dio.repository.CommonsRepository.checkFundsForTransaction;
 
 public class investmentRepository {
-
     private long nextId;
     private final List<Investment> investments = new ArrayList<>();
     private final List<InvestmentWallet> wallets = new ArrayList<>();
