@@ -1,6 +1,9 @@
 package br.com.dio.model;
 
 
+import lombok.Getter;
+import lombok.ToString;
+
 import java.time.OffsetDateTime;
 import java.util.UUID;
 import java.util.stream.Stream;

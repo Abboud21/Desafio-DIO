@@ -1,6 +1,7 @@
 package br.com.dio.model;
 
-import lombook.ToString;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public abstract class Wallet {
     public List<Money> reduceMoney(final long amount){
         List<Money> toRemove = new ArrayList<>();
         for (int i = 0; i < amount;i++){
-            toRemove.add(this.money.removeFirst());
+            toRemove.add(this.money.remove(0));
         }
         return toRemove;
     }
