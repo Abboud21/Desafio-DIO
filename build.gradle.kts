@@ -16,9 +16,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.projectreactor:lombok")
 
-    annotationProcessor("org.project lombok:lombok:1.18.36")
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

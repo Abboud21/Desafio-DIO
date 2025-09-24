@@ -7,6 +7,7 @@ import br.com.dio.model.MoneyAudit;
 import br.com.dio.model.Wallet;
 import lombok.NoArgsConstructor;
 
+
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +15,6 @@ import java.util.stream.Stream;
 
 import static br.com.dio.model.BankService.ACCOUNT;
 import static lombok.AccessLevel.PRIVATE;
-
 
 @NoArgsConstructor(access = PRIVATE)
 public final class CommonsRepository {

@@ -2,7 +2,6 @@ package br.com.dio.repository;
 
 import br.com.dio.expcetion.AccountWithInvestmentException;
 import br.com.dio.expcetion.InvestmentNotFoundException;
-import br.com.dio.expcetion.PixUseException;
 import br.com.dio.expcetion.WalletNotFoundException;
 import br.com.dio.model.AccountWallet;
 import br.com.dio.model.Investment;
@@ -13,8 +12,8 @@ import java.util.List;
 
 import static br.com.dio.repository.CommonsRepository.checkFundsForTransaction;
 
-public class investmentRepository {
-    private long nextId;
+public class InvestmentRepository {
+    private long nextId = 0;
     private final List<Investment> investments = new ArrayList<>();
     private final List<InvestmentWallet> wallets = new ArrayList<>();
 
@@ -26,9 +25,11 @@ public class investmentRepository {
     }
 
     public InvestmentWallet initInvestment(final AccountWallet account, final long id){
-        var accountsInUse =  wallets.stream().map(InvestmentWallet :: getAccount).toList();
-        if (accountsInUse.contains(account)) {
-            throw new AccountWithInvestmentException("A conta '" + account + " ja possui um investimento");
+        if (!wallets.isEmpty()) {
+            var accountsInUse = wallets.stream().map(InvestmentWallet::getAccount).toList();
+            if (accountsInUse.contains(account)) {
+                throw new AccountWithInvestmentException("A conta '" + account + " ja possui um investimento");
+            }
         }
         var investment = findById(id);
         checkFundsForTransaction(account,investment.initalFunds());
@@ -53,8 +54,8 @@ public class investmentRepository {
         return wallet;
     }
 
-    public void updateAmount(final long percent){
-        wallets.forEach(w -> w.updateAmount(percent));
+    public void updateAmount(){
+        wallets.forEach(w -> w.updateAmount(w.getInvestment().tax()));
     }
 
     public Investment findById(final long id){
