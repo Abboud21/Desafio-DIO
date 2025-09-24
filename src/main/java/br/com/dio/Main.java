@@ -170,7 +170,7 @@ public class Main {
                 System.out.println(k.format(ISO_DATE_TIME));
                 System.out.println(v.get(0).transactionId());
                 System.out.println(v.get(0).description());
-                System.out.println("R$" + (v.size() / 100) + ",1" + (v.size() % 100));
+                System.out.println("R$" + (v.size() / 100) + "," + (v.size() % 100));
             });
         } catch (AccountNotFoundException ex){
             System.out.println(ex.getMessage());
